@@ -1,9 +1,13 @@
+// load all data start
 const loadData = async () => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     const res = await fetch(url);
     const data = await res.json();
     displayData(data.data.tools);
 }
+// load all data end
+
+// display all data start
 const displayData = datas => {
     const dataContainer = document.getElementById('data-container');
     const seeMore = document.getElementById('seeMore');
@@ -34,7 +38,7 @@ const displayData = datas => {
             <p><i class="fa-solid fa-calendar-days"></i> ${data.published_in}</p>
             </div>
             <div class="col-2">
-            <button onclick="loadeDetails" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
+            <button onclick="loadSingleData('${data.data}')" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
         </div>
@@ -44,6 +48,9 @@ const displayData = datas => {
         togleSpinner(false);
     });
 };
+// display all data end
+
+// spinner start 
 const togleSpinner = isLoading => {
     const lodarSection = document.getElementById('loader');
     if (isLoading) {
@@ -53,6 +60,9 @@ const togleSpinner = isLoading => {
         lodarSection.classList.add('d-none');
     }
 }
+// spinner end 
+
+// see more button data start
 document.getElementById('btn-see-More').addEventListener('click', function () {
     const loadData = async () => {
         const url = `https://openapi.programming-hero.com/api/ai/tools`
@@ -90,7 +100,7 @@ document.getElementById('btn-see-More').addEventListener('click', function () {
                 <p><i class="fa-solid fa-calendar-days"></i> ${data.published_in}</p>
                 </div>
                 <div class="col-2">
-                <button onclick=""loadeDetails('${data.published_in}')" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
+                <button onclick="loadSingleData('${data.data}') href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
             </div>
@@ -102,13 +112,22 @@ document.getElementById('btn-see-More').addEventListener('click', function () {
     };
     loadData();
 })
+// see more button data end
 
-// const loadeDetails = async id => {
-//     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
-//     const res = await fetch(url);
-//     const data = await res.json();
-//     console.log(data);
-// }
+// modal data load start
+const loadSingleData = async id => {
+    const url = ` https://openapi.programming-hero.com/api/ai/tool/${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data.data);
+}
+// modal data load start
+
+// modal data display start
+const displaySingleData = (data) => {
+
+}
+// modal data display end
 
 
 togleSpinner(true);
