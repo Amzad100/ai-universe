@@ -128,7 +128,5 @@ const displaySingleData = (data) => {
 
 }
 // modal data display end
-
-
 togleSpinner(true);
 loadData();
