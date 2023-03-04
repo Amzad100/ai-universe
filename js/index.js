@@ -23,9 +23,9 @@ const displayData = datas => {
         <div class="card-body">
             <h5 class="card-title">Features</h5>
             <ol>
-                <li>${data}</li>
-                <li>${data}</li>
-                <li>${data}</li>
+                <li>${data.features[0]}</li>
+                <li>${data.features[1]}</li>
+                <li>${data.features[2]}</li>
             </ol>
         <hr>
         <h5>${data.name}</h5>
@@ -34,7 +34,7 @@ const displayData = datas => {
             <p><i class="fa-solid fa-calendar-days"></i> ${data.published_in}</p>
             </div>
             <div class="col-2">
-            <button><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
+            <button onclick="loadeDetails" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
         </div>
@@ -79,9 +79,9 @@ document.getElementById('btn-see-More').addEventListener('click', function () {
             <div class="card-body">
                 <h5 class="card-title">Features</h5>
                 <ol>
-                    <li>${data}</li>
-                    <li>${data}</li>
-                    <li>${data}</li>
+                <li>${data.features[0]}</li>
+                <li>${data.features[1]}</li>
+                <li>${data.features[2]}</li>
                 </ol>
             <hr>
             <h5>${data.name}</h5>
@@ -90,7 +90,7 @@ document.getElementById('btn-see-More').addEventListener('click', function () {
                 <p><i class="fa-solid fa-calendar-days"></i> ${data.published_in}</p>
                 </div>
                 <div class="col-2">
-                <button><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
+                <button onclick=""loadeDetails('${data.published_in}')" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
             </div>
@@ -102,5 +102,14 @@ document.getElementById('btn-see-More').addEventListener('click', function () {
     };
     loadData();
 })
+
+// const loadeDetails = async id => {
+//     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+//     const res = await fetch(url);
+//     const data = await res.json();
+//     console.log(data);
+// }
+
+
 togleSpinner(true);
 loadData();
